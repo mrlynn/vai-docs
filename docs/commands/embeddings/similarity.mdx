@@ -4,9 +4,15 @@ description: "Compare text similarity using cosine distance"
 sidebar_position: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # vai similarity
 
 Compute cosine similarity between texts by embedding them and comparing their vectors.
+
+<Tabs>
+<TabItem value="cli" label="CLI" default>
 
 ## Synopsis
 
@@ -69,14 +75,47 @@ vai similarity "cat" "dog" --quiet
 vai similarity "hello" "world" --json
 ```
 
+</TabItem>
+<TabItem value="playground" label="Playground">
+
+## Using the Similarity Tab
+
+The **Similarity** tab in `vai playground` lets you visually compare texts and see how closely related they are in embedding space.
+
+### Getting Started
+
+1. Run `vai playground` to start the web app
+2. Select the **Similarity** tab from the navigation
+3. Enter two texts in the input fields
+4. Click **Compare** to compute the cosine similarity score
+
+### Features
+
+**Side-by-side input**: Enter both texts in adjacent fields for easy comparison.
+
+**Similarity score**: Displays the cosine similarity as a value between 0.0 and 1.0, with a visual indicator of how similar the texts are. Higher scores mean more semantically similar.
+
+**Model selection**: Choose which embedding model to use for the comparison.
+
+**Dimensions**: Adjust output dimensions to see how dimensionality affects similarity scores.
+
+### Use Cases
+
+- Testing how well a search query matches candidate documents
+- Checking if two pieces of content are semantically similar (deduplication)
+- Exploring how the embedding model understands different phrasings
+
+</TabItem>
+</Tabs>
+
 ## Output
 
-In two-text mode, outputs a single cosine similarity score (0.0–1.0). In one-vs-many mode, results are sorted by similarity descending, showing each comparison text and its score.
+In two-text mode, outputs a single cosine similarity score (0.0 to 1.0). In one-vs-many mode, results are sorted by similarity descending, showing each comparison text and its score.
 
 ## Tips
 
-- Cosine similarity ranges from -1 to 1, but for normalized embeddings it's typically 0 to 1. Higher = more similar.
-- Use `--quiet` to get just the numeric score — useful for scripting.
+- Cosine similarity ranges from -1 to 1, but for normalized embeddings it's typically 0 to 1. Higher means more similar.
+- Use `--quiet` (CLI) to get just the numeric score for scripting.
 - No `--input-type` is set since you're comparing texts directly, not doing asymmetric retrieval.
 
 ## Related Commands

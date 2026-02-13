@@ -4,9 +4,15 @@ description: "Vector similarity search against MongoDB Atlas"
 sidebar_position: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # vai search
 
 Perform vector similarity search against a MongoDB Atlas collection using `$vectorSearch`.
+
+<Tabs>
+<TabItem value="cli" label="CLI" default>
 
 ## Synopsis
 
@@ -72,6 +78,41 @@ vai search --query "vector search" --db myapp --collection docs --json | jq '.[0
 vai search --query "scaling" --db myapp --collection docs \
   --index my_custom_index --field content_embedding
 ```
+
+</TabItem>
+<TabItem value="playground" label="Playground">
+
+## Using the Search Tab
+
+The **Search** tab in `vai playground` provides a visual interface for vector similarity search against your MongoDB Atlas collections.
+
+### Getting Started
+
+1. Run `vai playground` to start the web app
+2. Select the **Search** tab from the navigation
+3. Enter your database and collection names (or use defaults from `.vai.json`)
+4. Type a search query and click **Search**
+
+### Features
+
+**Query input**: Enter natural language search queries. The playground embeds your query and runs `$vectorSearch` against your collection.
+
+**Database and collection**: Select which MongoDB Atlas collection to search. If you have a `.vai.json` config, defaults are pre-filled.
+
+**Result display**: Results are shown with similarity scores, document text, and metadata. Embedding vectors are stripped for readability.
+
+**Filters**: Apply MongoDB pre-filters to narrow results by metadata fields before vector comparison.
+
+**Limit and score threshold**: Control how many results to return and set a minimum similarity score.
+
+**Model selection**: Choose which embedding model to use for the query. Make sure it matches the model used when the documents were embedded.
+
+### Workflow Integration
+
+Search is also available as a step in the **Workflows** tab. Add a `search` node to chain vector search with other operations like reranking or filtering.
+
+</TabItem>
+</Tabs>
 
 ## Tips
 

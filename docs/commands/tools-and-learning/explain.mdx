@@ -4,9 +4,15 @@ description: "Interactive explainer for 30+ embedding and RAG topics"
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # vai explain
 
-Learn about embeddings, reranking, RAG, vector search, and more — right from your terminal. Covers 30+ topics with explanations, key points, try-it commands, and links to further reading.
+Learn about embeddings, reranking, RAG, vector search, and more. Covers 30+ topics with explanations, key points, try-it commands, and links to further reading.
+
+<Tabs>
+<TabItem value="cli" label="CLI" default>
 
 ## Synopsis
 
@@ -23,13 +29,13 @@ Each explanation includes:
 - Practical "Try it" commands you can run immediately
 - Links to official documentation
 
-Topic names support fuzzy matching — you don't need to type the exact key.
+Topic names support fuzzy matching, so you don't need to type the exact key.
 
 ## Options
 
 | Flag | Description | Default |
 |------|-------------|---------|
-| `[topic]` | Topic to explain (optional — lists all if omitted) | — |
+| `[topic]` | Topic to explain (optional, lists all if omitted) | — |
 | `--json` | Machine-readable JSON output | — |
 
 ## Examples
@@ -63,6 +69,41 @@ vai explain shared-space
 ```bash
 vai explain embeddings --json
 ```
+
+</TabItem>
+<TabItem value="playground" label="Playground">
+
+## Learning in the Playground
+
+The `vai playground` integrates learning content throughout the interface with contextual help and tooltips.
+
+### Contextual Help
+
+Each tab in the playground includes inline guidance:
+
+**Embed tab**: Explains input types, dimensions, and model selection with tooltips on each option.
+
+**Search tab**: Describes how `$vectorSearch` works, what `numCandidates` means, and how filters are applied.
+
+**Rerank tab**: Explains the difference between embedding-based similarity and cross-attention reranking.
+
+**Similarity tab**: Describes cosine similarity and what the scores mean.
+
+### Explore Topics
+
+For deep dives into specific concepts, use the CLI:
+
+```bash
+vai explain embeddings
+vai explain reranking
+vai explain shared-space
+vai explain rag
+```
+
+The playground complements the `explain` command by letting you immediately try concepts hands-on. Read about embeddings, then switch to the Embed tab and generate one.
+
+</TabItem>
+</Tabs>
 
 ## Available Topics
 

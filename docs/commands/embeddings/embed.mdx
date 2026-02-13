@@ -4,9 +4,15 @@ description: "Generate vector embeddings for text"
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # vai embed
 
-Generate vector embeddings from text using Voyage AI models. Accepts inline text, file input, or stdin.
+Generate vector embeddings from text using Voyage AI models.
+
+<Tabs>
+<TabItem value="cli" label="CLI" default>
 
 ## Synopsis
 
@@ -74,11 +80,44 @@ vai embed --file large-document.txt --estimate
 vai embed "vector search" --output-dtype int8
 ```
 
+</TabItem>
+<TabItem value="playground" label="Playground">
+
+## Using the Embed Tab
+
+The **Embed** tab in `vai playground` provides a visual interface for generating embeddings.
+
+### Getting Started
+
+1. Run `vai playground` to start the web app
+2. Select the **Embed** tab from the navigation
+3. Enter your text in the input field
+4. Click **Embed** to generate the vector
+
+### Features
+
+**Model selection**: Choose from all available Voyage AI models using the dropdown. The playground defaults to `voyage-4-large`.
+
+**Input type**: Toggle between `query` and `document` input types. This affects how the model optimizes the embedding for retrieval accuracy.
+
+**Dimensions**: Select output dimensions (256, 512, 1024, 2048) for models that support flexible sizing.
+
+**Output preview**: The playground displays the embedding vector with metadata including token count, model used, and dimensions.
+
+**Cost estimation**: View estimated cost before generating the embedding.
+
+### Workflow Integration
+
+The Embed tab is also available as a step in the **Workflows** tab. Add an `embed` node to your workflow to embed text as part of a larger pipeline.
+
+</TabItem>
+</Tabs>
+
 ## Tips
 
 - Use `--input-type query` for search queries and `--input-type document` for corpus text. The model optimizes embeddings differently for each.
-- All Voyage 4 models share the same embedding space — you can embed documents with `voyage-4-lite` and queries with `voyage-4-large` for cost savings.
-- Use `--output-format array` when piping embeddings to another tool.
+- All Voyage 4 models share the same embedding space, so you can embed documents with `voyage-4-lite` and queries with `voyage-4-large` for cost savings.
+- Use `--output-format array` (CLI) when piping embeddings to another tool.
 - The `--estimate` flag shows a cost comparison table and lets you switch models before calling the API.
 
 ## Related Commands

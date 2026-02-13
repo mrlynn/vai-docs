@@ -4,9 +4,15 @@ description: "List available models with pricing and benchmarks"
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # vai models
 
 List all available Voyage AI models with architecture details, pricing, dimensions, and benchmark scores.
+
+<Tabs>
+<TabItem value="cli" label="CLI" default>
 
 ## Synopsis
 
@@ -54,6 +60,32 @@ vai models --all
 ```bash
 vai models --json | jq '.[].name'
 ```
+
+</TabItem>
+<TabItem value="playground" label="Playground">
+
+## Viewing Models in the Playground
+
+Model information is integrated throughout `vai playground`. When selecting a model in any tab (Embed, Search, Similarity, Rerank), you can see the available models with their key attributes.
+
+### Where Models Appear
+
+**Model dropdowns**: Every tab that calls the Voyage AI API includes a model selector. The dropdown shows model names with their type and pricing.
+
+**Estimate tab**: The cost estimation view lets you compare models side by side, showing per-token pricing and projected costs for your workload.
+
+### Model Information
+
+Each model dropdown provides:
+- Model name and type (embedding, reranking, multimodal)
+- Pricing per million tokens
+- Supported dimensions (for embedding models)
+- Context window size
+
+For detailed benchmarks and architecture information, use the CLI with `vai models --benchmarks` or explore topics with `vai explain`.
+
+</TabItem>
+</Tabs>
 
 ## Current Models
 

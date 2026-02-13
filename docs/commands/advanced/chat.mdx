@@ -4,9 +4,15 @@ description: "Conversational RAG with Anthropic, OpenAI, or Ollama"
 sidebar_position: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # vai chat
 
 A conversational RAG interface that combines vector search retrieval with LLM-powered responses. Chat with your knowledge base using natural language.
+
+<Tabs>
+<TabItem value="cli" label="CLI" default>
 
 ## Synopsis
 
@@ -27,7 +33,7 @@ vai chat [options]
 Supports three LLM providers: **Anthropic** (Claude), **OpenAI** (GPT), and **Ollama** (local models). Sessions can be persisted to MongoDB for resumption.
 
 Two modes are available:
-- **Pipeline mode** (default): Fixed RAG flow — search → rerank → generate
+- **Pipeline mode** (default): Fixed RAG flow, search → rerank → generate
 - **Agent mode**: The LLM uses tool calls to decide when and how to search
 
 ## Options
@@ -105,7 +111,78 @@ vai config set llm-base-url http://localhost:11434
 vai config set llm-model llama3
 ```
 
-Or use `vai init` — the interactive wizard includes chat setup.
+Or use `vai init`, which includes chat setup in the interactive wizard.
+
+</TabItem>
+<TabItem value="playground" label="Playground">
+
+## Using Chat in the Playground
+
+The `vai playground` does not currently include a dedicated Chat tab. Chat is a CLI-only feature that provides an interactive terminal session with streaming responses.
+
+### Why CLI Only?
+
+Chat sessions are conversational and stateful, requiring real-time streaming and keyboard interaction that work naturally in the terminal. The playground focuses on discrete operations (embed, search, rerank, similarity) and visual workflow building.
+
+### Getting Started with CLI Chat
+
+1. Configure your LLM provider:
+
+```bash
+vai config set llm-provider anthropic
+vai config set llm-api-key sk-ant-...
+```
+
+2. Start a chat session:
+
+```bash
+vai chat --db myapp --collection docs
+```
+
+3. Ask questions in natural language. vai retrieves relevant documents from your collection and generates grounded answers.
+
+### Pipeline vs. Agent Mode
+
+| Feature | Pipeline Mode | Agent Mode |
+|---------|--------------|------------|
+| **Retrieval** | Every turn: search → rerank → generate | LLM decides when to search |
+| **Flexibility** | Fixed flow | LLM can search multiple times, different queries |
+| **Predictability** | High | Lower (LLM-dependent) |
+| **Token cost** | Consistent | Variable |
+| **Requires** | Any LLM | LLM with tool-calling support |
+
+### Supported Providers
+
+| Provider | Models | Setup |
+|----------|--------|-------|
+| **Anthropic** | Claude Opus, Claude Sonnet | API key from [console.anthropic.com](https://console.anthropic.com) |
+| **OpenAI** | GPT-4, GPT-4 Turbo, GPT-3.5 Turbo | API key from [platform.openai.com](https://platform.openai.com) |
+| **Ollama** | Llama 3, Mistral, Phi, Gemma | Local installation, free |
+
+</TabItem>
+</Tabs>
+
+## How It Works
+
+```mermaid
+sequenceDiagram
+    participant You
+    participant vai as vai chat
+    participant VoyageAI as Voyage AI
+    participant MongoDB as MongoDB Atlas
+    participant LLM as LLM Provider
+
+    You->>vai: Ask a question
+    vai->>VoyageAI: Embed query
+    VoyageAI-->>vai: Query vector
+    vai->>MongoDB: Vector search
+    MongoDB-->>vai: Relevant docs
+    vai->>VoyageAI: Rerank (optional)
+    VoyageAI-->>vai: Ranked results
+    vai->>LLM: Context + question
+    LLM-->>vai: Streamed response
+    vai-->>You: Grounded answer
+```
 
 ## Tips
 

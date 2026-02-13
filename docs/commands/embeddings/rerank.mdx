@@ -4,9 +4,15 @@ description: "Rerank documents by relevance to a query"
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # vai rerank
 
 Rerank a set of documents against a query using Voyage AI's cross-encoder reranking models.
+
+<Tabs>
+<TabItem value="cli" label="CLI" default>
 
 ## Synopsis
 
@@ -71,10 +77,44 @@ vai rerank --query "authentication" --documents-file docs.txt --model rerank-2.5
 vai rerank --query "scaling" --documents-file docs.json --return-documents --json
 ```
 
+</TabItem>
+<TabItem value="playground" label="Playground">
+
+## Using the Rerank Tab
+
+The **Rerank** tab in `vai playground` provides a visual interface for reranking documents against a query.
+
+### Getting Started
+
+1. Run `vai playground` to start the web app
+2. Select the **Rerank** tab from the navigation
+3. Enter your query in the query field
+4. Add documents to compare (one per line, or paste a JSON array)
+5. Click **Rerank** to see relevance scores
+
+### Features
+
+**Query input**: Enter the search query that documents will be ranked against.
+
+**Document list**: Add multiple documents to be reranked. Each document gets a relevance score from the cross-attention model.
+
+**Sorted results**: Documents are displayed in order of relevance, with scores indicating how well each matches the query.
+
+**Model selection**: Choose between `rerank-2.5` (best quality) and `rerank-2.5-lite` (faster, cheaper).
+
+**Top-K filtering**: Limit results to the top K most relevant documents.
+
+### When to Use Reranking
+
+Reranking is most effective as a second stage after vector search. It provides higher precision by reading the query and document together rather than comparing independent embeddings. The playground lets you experiment with different queries and document sets to see how reranking changes result ordering.
+
+</TabItem>
+</Tabs>
+
 ## Tips
 
 - Reranking is most effective as a second stage after vector search. Use [`vai query`](../rag-pipeline/query) to combine both stages automatically.
-- The `--documents-file` accepts JSON arrays, newline-delimited text, or JSONL with a `text` field.
+- The `--documents-file` (CLI) accepts JSON arrays, newline-delimited text, or JSONL with a `text` field.
 - `rerank-2.5` gives the best quality; `rerank-2.5-lite` is faster and cheaper for high-throughput use cases.
 
 ## Related Commands
