@@ -25,7 +25,12 @@ const config: Config = {
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
   themes: [
+    '@docusaurus/theme-mermaid',
     [
       '@easyops-cn/docusaurus-search-local',
       {
@@ -86,7 +91,7 @@ const config: Config = {
     },
     announcementBar: {
       id: 'v1_25',
-      content: 'vai v1.25.0 is here with agentic workflows, chat, and MCP server. <a href="/blog/workflows-launch">Read the release notes</a>.',
+      content: 'vai v1.27.0 is here with agentic workflows, chat, and MCP server. <a href="/blog/workflows-launch">Read the release notes</a>.',
       backgroundColor: '#00D4AA',
       textColor: '#001E2B',
       isCloseable: true,
