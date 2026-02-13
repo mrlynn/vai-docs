@@ -107,6 +107,6 @@ vai mcp install all --force
 
 ## Further Reading
 
-- [`vai mcp`](/docs/commands/mcp/mcp) — MCP server command reference
+- [`vai mcp`](/docs/commands/mcp) — MCP server command reference
 - [MCP Server Guide](/docs/guides/mcp-server/overview) — Setup guide
 - [Common Errors](./common-errors) — General troubleshooting
