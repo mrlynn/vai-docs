@@ -1,0 +1,183 @@
+/* ── Hero ── */
+.hero {
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+.heroLogo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 40px rgba(0, 212, 170, 0.3));
+}
+
+.heroTitle {
+  font-size: 5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  font-family: 'Source Code Pro', 'SF Mono', 'Fira Code', monospace;
+}
+
+.heroSubtitle {
+  font-size: 1.4rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.installCommand {
+  display: inline-block;
+  background: #112733;
+  border: 1px solid #3D4F58;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  margin-bottom: 2rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 1rem;
+  color: #00D4AA;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.heroPrimary {
+  background: #00D4AA;
+  color: #001E2B;
+  border: none;
+  font-weight: 700;
+  padding: 0.6rem 1.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.heroPrimary:hover {
+  background: #5CE8CC;
+  color: #001E2B;
+  text-decoration: none;
+}
+
+.heroSecondary {
+  background: transparent;
+  color: var(--ifm-color-primary);
+  border: 1px solid var(--ifm-color-primary);
+  font-weight: 600;
+  padding: 0.6rem 1.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.heroSecondary:hover {
+  background: rgba(0, 212, 170, 0.1);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+/* ── Features ── */
+.features {
+  padding: 3rem 0;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .featureGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featureCardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.featureCardLink:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.featureTitle {
+  color: #00D4AA;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.featureDescription {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ── Terminal ── */
+.terminalSection {
+  padding: 3rem 0;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.terminalWrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── Capabilities ── */
+.capabilities {
+  padding: 3rem 0;
+}
+
+.capabilityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .capabilityGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.capabilityItem {
+  padding: 1rem;
+}
+
+.capabilityItem h4 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.capabilityItem p {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ── Disclaimer ── */
+.disclaimer {
+  padding: 2rem 0 3rem;
+  text-align: center;
+}
+
+.disclaimerText {
+  color: var(--ifm-color-emphasis-500);
+  font-size: 0.85rem;
+  max-width: 600px;
+  margin: 0 auto;
+}

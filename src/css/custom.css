@@ -1,0 +1,160 @@
+/**
+ * vai docs custom theme
+ * Brand colors from https://vai.mlynn.org/branding
+ * System fonts only, no external font files.
+ */
+
+/* ── Light mode ── */
+:root {
+  --ifm-color-primary: #00D4AA;
+  --ifm-color-primary-dark: #009E80;
+  --ifm-color-primary-darker: #007A63;
+  --ifm-color-primary-darkest: #005C4A;
+  --ifm-color-primary-light: #5CE8CC;
+  --ifm-color-primary-lighter: #80EDDA;
+  --ifm-color-primary-lightest: #B3F5EA;
+
+  --ifm-background-color: #FFFFFF;
+  --ifm-background-surface-color: #F9FBFA;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 212, 170, 0.1);
+
+  --ifm-font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --ifm-font-family-monospace: 'Source Code Pro', 'SF Mono', 'Fira Code',
+    'Cascadia Code', Consolas, monospace;
+
+  --ifm-heading-font-weight: 700;
+  --ifm-font-weight-bold: 600;
+
+  --vai-cyan: #40E0FF;
+  --vai-cyan-dark: #0088CC;
+  --vai-accent: #B45AF2;
+  --vai-error: #FF6960;
+  --vai-warning: #FFC010;
+}
+
+/* ── Dark mode ── */
+[data-theme='dark'] {
+  --ifm-color-primary: #00D4AA;
+  --ifm-color-primary-dark: #009E80;
+  --ifm-color-primary-darker: #007A63;
+  --ifm-color-primary-darkest: #005C4A;
+  --ifm-color-primary-light: #5CE8CC;
+  --ifm-color-primary-lighter: #80EDDA;
+  --ifm-color-primary-lightest: #B3F5EA;
+
+  --ifm-background-color: #001E2B;
+  --ifm-background-surface-color: #112733;
+  --ifm-color-emphasis-300: #3D4F58;
+  --ifm-color-emphasis-500: #889397;
+  --ifm-color-emphasis-700: #C1C7C6;
+  --ifm-color-emphasis-900: #E8EDEB;
+  --ifm-footer-background-color: #001E2B;
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 212, 170, 0.15);
+}
+
+/* ── Navbar ── */
+[data-theme='dark'] .navbar {
+  background-color: #001E2B;
+  border-bottom: 1px solid #3D4F58;
+}
+
+.navbar__title {
+  font-family: 'Source Code Pro', 'SF Mono', 'Fira Code', monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ── Hero gradient text ── */
+.hero-gradient-text {
+  background: linear-gradient(135deg, #00D4AA 0%, #40E0FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Feature cards ── */
+[data-theme='dark'] .feature-card {
+  background-color: #112733;
+  border: 1px solid #3D4F58;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+[data-theme='dark'] .feature-card:hover {
+  border-color: #00D4AA;
+}
+
+.feature-card {
+  background-color: #F9FBFA;
+  border: 1px solid #E8EDEB;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.feature-card:hover {
+  border-color: #00D4AA;
+}
+
+/* ── Terminal-style code blocks ── */
+.terminal-block {
+  background: #112733;
+  border: 1px solid #3D4F58;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.terminal-block .prompt {
+  color: #00D4AA;
+  user-select: none;
+}
+
+.terminal-block .output {
+  color: #889397;
+}
+
+/* ── Sidebar ── */
+[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+  color: #00D4AA;
+}
+
+/* ── Announcement bar ── */
+div[class*='announcementBar'] {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ── Code blocks inside admonitions ── */
+.admonition pre {
+  margin: 0.5rem 0;
+}
+
+/* ── Watermark on doc pages ── */
+html.docs-doc-page body::after {
+  content: '';
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 200px;
+  height: 200px;
+  background-image: url('/img/watermark.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Footer ── */
+[data-theme='dark'] .footer {
+  border-top: 1px solid #3D4F58;
+}
