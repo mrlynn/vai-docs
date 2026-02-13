@@ -8,9 +8,30 @@ sidebar_position: 1
 
 ## Prerequisites
 
-- **Node.js 20+** ([download](https://nodejs.org/))
 - **Voyage AI API key** (free tier available at [dash.voyageai.com](https://dash.voyageai.com))
 - **MongoDB Atlas cluster** (free tier at [mongodb.com/atlas](https://www.mongodb.com/atlas)) for storage and search commands
+- **Node.js 20+** ([download](https://nodejs.org/)) for npm install (Homebrew and Docker handle this automatically)
+
+## Install via Homebrew (macOS / Linux)
+
+The simplest way to install on macOS or Linux:
+
+```bash
+brew tap mrlynn/vai
+brew install vai
+```
+
+Verify the installation:
+
+```bash
+vai --version
+```
+
+To upgrade later:
+
+```bash
+brew update && brew upgrade vai
+```
 
 ## Install via npm
 
@@ -34,6 +55,30 @@ Use `npx` to run vai without a global install:
 npx voyageai-cli@latest quickstart
 npx voyageai-cli@latest embed "Hello, world"
 ```
+
+## Install via Docker
+
+Run vai in a container with no Node.js install required:
+
+```bash
+git clone https://github.com/mrlynn/voyageai-cli.git
+cd voyageai-cli
+docker build -t vai .
+```
+
+Run any vai command:
+
+```bash
+docker run --rm -e VOYAGE_API_KEY="your-key" vai embed "hello world"
+```
+
+Start the web playground:
+
+```bash
+docker run --rm -p 3333:3333 -e VOYAGE_API_KEY="your-key" vai playground --no-open
+```
+
+For Docker Compose, the wrapper script, and production deployment, see the [Docker guide](/docs/guides/docker/overview).
 
 ## Set Up Credentials
 

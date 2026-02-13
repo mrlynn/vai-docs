@@ -206,6 +206,16 @@ const sidebars: SidebarsConfig = {
             'guides/data-lifecycle/refresh-embeddings',
           ],
         },
+        {
+          type: 'category',
+          label: 'Docker',
+          items: [
+            'guides/docker/overview',
+            'guides/docker/compose',
+            'guides/docker/wrapper-script',
+            'guides/docker/production',
+          ],
+        },
         'guides/n8n-integration',
         'guides/desktop-app',
         'guides/web-playground',
