@@ -134,4 +134,4 @@ Detailed JSON schemas for each MCP tool's input parameters. These schemas are us
 ## Further Reading
 
 - [MCP Tools](./mcp-tools) — Tool descriptions and usage
-- [`vai mcp`](/docs/commands/mcp/mcp) — Server command reference
+- [`vai mcp`](/docs/commands/mcp) — Server command reference

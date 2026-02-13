@@ -75,4 +75,4 @@ vai mcp install claude --force
 
 - [`vai mcp uninstall`](./mcp-uninstall) — Remove MCP server from tools
 - [`vai mcp status`](./mcp-status) — Check installation status
-- [`vai mcp`](./mcp) — Start the MCP server manually
+- [`vai mcp`](./) — Start the MCP server manually

@@ -122,6 +122,6 @@ Once installed, your AI agent can call these tools directly. For example, in Cla
 
 ## Further Reading
 
-- [`vai mcp`](/docs/commands/mcp/mcp) — MCP server command reference
+- [`vai mcp`](/docs/commands/mcp) — MCP server command reference
 - [MCP Tool Parameters](./mcp-tool-parameters) — Detailed parameter schemas
 - [MCP Server Guide](/docs/guides/mcp-server/overview) — Setup guide
