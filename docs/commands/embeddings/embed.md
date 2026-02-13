@@ -6,14 +6,84 @@ sidebar_position: 1
 
 # vai embed
 
-Content coming soon. See [vai-docs-content-spec.md](https://github.com/mrlynn/vai-docs/blob/main/vai-docs-content-spec.md) for the content plan.
+Generate vector embeddings from text using Voyage AI models. Accepts inline text, file input, or stdin.
 
 ## Synopsis
 
+```bash
+vai embed [text] [options]
+```
+
 ## Description
+
+`vai embed` sends text to the Voyage AI API and returns dense vector embeddings. It supports single or batch embedding, multiple output formats, quantized output types, and cost estimation before calling the API.
+
+When no `--input-type` is specified, vai shows a tip recommending `--input-type query` or `--input-type document` for better retrieval accuracy.
 
 ## Options
 
+| Flag | Description | Default |
+|------|-------------|---------|
+| `-m, --model <model>` | Embedding model | `voyage-4-large` |
+| `-t, --input-type <type>` | Input type: `query` or `document` | — |
+| `-d, --dimensions <n>` | Output dimensions (256, 512, 1024, 2048) | Model default |
+| `-f, --file <path>` | Read text from a file | — |
+| `--truncation` | Enable truncation for long inputs | — |
+| `--no-truncation` | Disable truncation | — |
+| `--output-dtype <type>` | Output data type: `float`, `int8`, `uint8`, `binary`, `ubinary` | `float` |
+| `-o, --output-format <format>` | Output format: `json` or `array` | `json` |
+| `--estimate` | Show estimated tokens and cost without calling the API | — |
+| `--json` | Machine-readable JSON output | — |
+| `-q, --quiet` | Suppress non-essential output | — |
+
 ## Examples
 
+### Embed inline text
+
+```bash
+vai embed "What is MongoDB Atlas Vector Search?"
+```
+
+### Embed a document file with input type
+
+```bash
+vai embed --file article.txt --input-type document
+```
+
+### Get raw array output for piping
+
+```bash
+vai embed "search query" --output-format array --input-type query
+```
+
+### Use a lighter model with reduced dimensions
+
+```bash
+vai embed "hello world" --model voyage-4-lite --dimensions 256
+```
+
+### Estimate cost before embedding
+
+```bash
+vai embed --file large-document.txt --estimate
+```
+
+### Quantized output for smaller storage
+
+```bash
+vai embed "vector search" --output-dtype int8
+```
+
+## Tips
+
+- Use `--input-type query` for search queries and `--input-type document` for corpus text. The model optimizes embeddings differently for each.
+- All Voyage 4 models share the same embedding space — you can embed documents with `voyage-4-lite` and queries with `voyage-4-large` for cost savings.
+- Use `--output-format array` when piping embeddings to another tool.
+- The `--estimate` flag shows a cost comparison table and lets you switch models before calling the API.
+
 ## Related Commands
+
+- [`vai similarity`](./similarity) — Compare text similarity using embeddings
+- [`vai store`](../data-management/store) — Embed and store in MongoDB
+- [`vai pipeline`](../rag-pipeline/pipeline) — End-to-end chunk → embed → store
+- [`vai estimate`](../rag-pipeline/estimate) — Compare embedding costs across models

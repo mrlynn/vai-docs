@@ -206,6 +206,7 @@ const sidebars: SidebarsConfig = {
             'guides/data-lifecycle/refresh-embeddings',
           ],
         },
+        'guides/n8n-integration',
         'guides/desktop-app',
         'guides/web-playground',
       ],

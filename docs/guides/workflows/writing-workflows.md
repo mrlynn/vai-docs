@@ -1,223 +1,101 @@
 ---
 title: Writing Workflows
-description: Create custom multi-step RAG pipelines
-sidebar_position: 3
+description: How to author custom workflow definitions
+sidebar_position: 2
 ---
 
 # Writing Workflows
 
-This guide walks through creating a custom workflow from scratch. We'll build a pipeline that searches a collection, filters low-relevance results, and generates an LLM summary.
+This guide walks through creating a custom vai workflow from scratch.
 
-## Scaffold a Workflow
-
-Start with the init command:
+## Step 1: Scaffold
 
 ```bash
-vai workflow init --name search-and-summarize
+vai workflow init -o my-workflow.json
 ```
 
-This creates a `search-and-summarize.json` file with a minimal template.
+This creates a starter file you can edit.
 
-## Workflow Structure
+## Step 2: Define Steps
 
-Every workflow has four sections:
+Each step needs:
+- **`id`** — Unique identifier (referenced by other steps)
+- **`type`** — Operation type (chunk, embed, store, search, rerank, etc.)
+- **`depends`** (optional) — Array of step IDs this step depends on
+- **`input`** — Step-specific input parameters
+- **`config`** (optional) — Step-specific configuration
 
 ```json
 {
-  "name": "Search and Summarize",
-  "description": "Find relevant docs and summarize with an LLM",
-  "version": "1.0.0",
-  "inputs": { },
-  "defaults": { },
-  "steps": [ ],
-  "output": { }
-}
-```
-
-## Step 1: Define Inputs
-
-Inputs are values provided at runtime via `--input key=value`:
-
-```json
-{
-  "inputs": {
-    "question": {
-      "type": "string",
-      "required": true,
-      "description": "The question to research"
-    },
-    "limit": {
-      "type": "number",
-      "default": 5,
-      "description": "Max documents to retrieve"
-    }
-  }
-}
-```
-
-## Step 2: Set Defaults
-
-Defaults are shared values available to all steps:
-
-```json
-{
-  "defaults": {
-    "db": "myapp",
-    "collection": "knowledge"
-  }
-}
-```
-
-## Step 3: Add Steps
-
-### Search Step
-
-```json
-{
-  "id": "search",
-  "tool": "query",
-  "description": "Search the knowledge base",
-  "inputs": {
-    "query": "{{ inputs.question }}",
-    "db": "{{ defaults.db }}",
-    "collection": "{{ defaults.collection }}",
-    "limit": "{{ inputs.limit }}"
-  }
-}
-```
-
-### Filter Step
-
-Keep only results above a score threshold:
-
-```json
-{
-  "id": "filter_results",
-  "tool": "filter",
-  "description": "Remove low-relevance results",
-  "inputs": {
-    "array": "{{ search.output.results }}",
-    "condition": "item.score > 0.7"
-  }
-}
-```
-
-The `filter_results` step depends on `search` (it references `search.output`), so vai automatically runs `search` first.
-
-### Summarize Step
-
-Use an LLM to synthesize the filtered results:
-
-```json
-{
-  "id": "summarize",
-  "tool": "generate",
-  "description": "Generate a summary from search results",
-  "inputs": {
-    "prompt": "Based on the following documents, answer this question: {{ inputs.question }}",
-    "context": "{{ filter_results.output }}",
-    "systemPrompt": "You are a technical documentation assistant. Cite sources."
-  }
-}
-```
-
-## Step 4: Define Output
-
-The output section determines what the workflow returns:
-
-```json
-{
-  "output": {
-    "answer": "{{ summarize.output.text }}",
-    "sources": "{{ filter_results.output }}",
-    "documentsSearched": "{{ search.output.resultCount }}"
-  }
-}
-```
-
-## Complete Workflow
-
-```json
-{
-  "name": "Search and Summarize",
-  "description": "Find relevant docs and summarize with an LLM",
-  "version": "1.0.0",
-  "inputs": {
-    "question": {
-      "type": "string",
-      "required": true,
-      "description": "The question to research"
-    },
-    "limit": {
-      "type": "number",
-      "default": 5
-    }
-  },
-  "defaults": {
-    "db": "myapp",
-    "collection": "knowledge"
-  },
+  "name": "documentation-pipeline",
   "steps": [
     {
-      "id": "search",
-      "tool": "query",
-      "description": "Search the knowledge base",
-      "inputs": {
-        "query": "{{ inputs.question }}",
-        "db": "{{ defaults.db }}",
-        "collection": "{{ defaults.collection }}",
-        "limit": "{{ inputs.limit }}"
-      }
+      "id": "chunk-docs",
+      "type": "chunk",
+      "input": { "path": "{{docs_path}}" },
+      "config": { "strategy": "markdown", "size": 1024, "overlap": 100 }
     },
     {
-      "id": "filter_results",
-      "tool": "filter",
-      "description": "Remove low-relevance results",
-      "inputs": {
-        "array": "{{ search.output.results }}",
-        "condition": "item.score > 0.7"
-      }
+      "id": "embed-chunks",
+      "type": "embed",
+      "depends": ["chunk-docs"],
+      "input": { "texts": "{{chunk-docs.output}}" },
+      "config": { "model": "voyage-4-large" }
     },
     {
-      "id": "summarize",
-      "tool": "generate",
-      "description": "Generate a summary",
-      "inputs": {
-        "prompt": "Based on the following documents, answer: {{ inputs.question }}",
-        "context": "{{ filter_results.output }}",
-        "systemPrompt": "You are a technical documentation assistant. Cite sources."
+      "id": "store-vectors",
+      "type": "store",
+      "depends": ["embed-chunks"],
+      "input": {
+        "embeddings": "{{embed-chunks.output}}",
+        "db": "{{db}}",
+        "collection": "{{collection}}"
       }
     }
-  ],
-  "output": {
-    "answer": "{{ summarize.output.text }}",
-    "sources": "{{ filter_results.output }}"
-  }
+  ]
 }
 ```
 
-## Validate and Run
+## Step 3: Add Inputs
+
+Workflow inputs use `{{variable_name}}` syntax. Pass values at runtime:
 
 ```bash
-# Check for errors
-vai workflow validate search-and-summarize.json
+vai workflow run my-workflow.json \
+  --input docs_path=./docs \
+  --input db=myapp \
+  --input collection=knowledge
+```
 
-# Dry run (no API calls)
-vai workflow run search-and-summarize.json --dry-run --input question="test"
+## Step 4: Validate
 
-# Execute
-vai workflow run search-and-summarize.json --input question="How does authentication work?"
+```bash
+vai workflow validate my-workflow.json
+```
+
+This checks for:
+- Valid JSON syntax
+- Required fields on each step
+- Missing dependencies
+- Circular references
+
+## Step 5: Dry Run
+
+```bash
+vai workflow run my-workflow.json --dry-run --input docs_path=./docs
+```
+
+Shows the execution plan without running anything.
+
+## Step 6: Execute
+
+```bash
+vai workflow run my-workflow.json --input docs_path=./docs --input db=myapp
 ```
 
 ## Tips
 
-- **Step IDs** must be unique and use `[a-zA-Z_][a-zA-Z0-9_]*` format
-- **Dependencies** are auto-detected from template expressions
-- **Parallel execution**: Steps with no shared dependencies run simultaneously
-- **Conditions**: Use the `condition` field to conditionally skip steps
-- **forEach**: Iterate over arrays with `forEach: "{{ step.output.items }}"`
-
-## Next Steps
-
-- **[Schema Reference](/docs/guides/workflows/schema-reference)**: Every field documented
-- **[Template Expressions](/docs/guides/workflows/template-expressions)**: Expression grammar and examples
+- Keep step IDs descriptive (`chunk-docs`, not `step1`)
+- Use `--verbose` to see step-by-step output
+- Steps without mutual dependencies run in parallel automatically
+- Validate before running to catch errors early
