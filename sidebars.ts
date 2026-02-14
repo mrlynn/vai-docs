@@ -2,10 +2,11 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   docsSidebar: [
-    'intro',
+    {type: 'doc', id: 'intro', className: 'sidebar-icon-intro'},
     {
       type: 'category',
       label: 'Getting Started',
+      className: 'sidebar-icon-getting-started',
       collapsed: false,
       items: [
         'getting-started/installation',
@@ -18,6 +19,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Core Concepts',
+      className: 'sidebar-icon-core-concepts',
       items: [
         'core-concepts/embeddings',
         'core-concepts/vector-search',
@@ -44,6 +46,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Command Reference',
+      className: 'sidebar-icon-command-ref',
       link: {type: 'doc', id: 'commands/overview'},
       items: [
         {
@@ -140,6 +143,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Guides',
+      className: 'sidebar-icon-guides',
       items: [
         'guides/five-minute-rag',
         {
@@ -231,6 +235,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Models',
+      className: 'sidebar-icon-models',
       items: [
         'models/overview',
         'models/voyage-4-family',
@@ -242,6 +247,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'API Reference',
+      className: 'sidebar-icon-api-ref',
       items: [
         'api-reference/environment-variables',
         'api-reference/mcp-tools',
@@ -253,6 +259,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Use Cases',
+      className: 'sidebar-icon-use-cases',
       items: [
         'use-cases/developer-docs',
         'use-cases/healthcare',
@@ -263,13 +270,14 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Troubleshooting',
+      className: 'sidebar-icon-troubleshooting',
       items: [
         'troubleshooting/common-errors',
         'troubleshooting/mcp-troubleshooting',
         'troubleshooting/connectivity',
-        'troubleshooting/faq',
       ],
     },
+    {type: 'doc', id: 'faq', className: 'sidebar-icon-faq'},
   ],
 };
 
