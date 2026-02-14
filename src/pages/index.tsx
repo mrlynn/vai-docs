@@ -15,9 +15,6 @@ function HeroSection() {
           alt="vai"
           className={styles.heroLogo}
         />
-        <h1 className={styles.heroTitle}>
-          <span className="hero-gradient-text">vai</span>
-        </h1>
         <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
         <div className={styles.installCommand}>
           <code>npm install -g voyageai-cli</code>

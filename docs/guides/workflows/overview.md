@@ -11,7 +11,7 @@ vai workflows let you define multi-step RAG pipelines as JSON files. Steps execu
 ## Quick Start
 
 ```bash
-# List built-in workflow templates
+# List built-in and community workflows
 vai workflow list
 
 # Run a built-in workflow
@@ -65,9 +65,22 @@ A workflow JSON file has a name, optional description, and an array of steps:
 - **Template expressions** (`{{variable}}`) pass data between steps
 - **Parallel execution**: Steps without dependencies on each other run concurrently
 
+## Two-Tier Workflow Library
+
+Workflows come from two sources:
+
+| Tier | Source | Description |
+|------|--------|-------------|
+| **Built-in** | Ships with vai | Maintained by the vai project, tested against every release |
+| **Community** | Installed from npm | Community-contributed packages following the `vai-workflow-*` convention |
+
+Use `vai workflow list` to see both tiers. Use `vai workflow search` to find community workflows on npm, and `vai workflow install` to add them to your project.
+
 ## Next Steps
 
 - [Writing Workflows](./writing-workflows) — Authoring guide
 - [Template Expressions](./template-expressions) — Data passing between steps
 - [Built-in Templates](./built-in-templates) — Pre-built workflows
 - [Schema Reference](./schema-reference) — Full workflow JSON schema
+- [Community Workflows](./community-workflows) — Browse and install community workflows
+- [Publishing Workflows](./publishing-workflows) — Share your workflows on npm

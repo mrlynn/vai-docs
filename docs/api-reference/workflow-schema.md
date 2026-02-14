@@ -18,6 +18,9 @@ interface VaiWorkflow {
   description?: string;
   version?: string;
 
+  // Store appearance
+  branding?: WorkflowBranding;
+
   // Parameterization
   inputs?: Record<string, WorkflowInput>;
 
@@ -29,6 +32,13 @@ interface VaiWorkflow {
 
   // What the workflow produces
   output?: Record<string, any>;
+}
+
+interface WorkflowBranding {
+  /** Predefined Lucide icon name (e.g., "search", "brain", "trophy") */
+  icon?: string;
+  /** Hex color code for the icon accent (e.g., "#00D4AA") */
+  color?: string;
 }
 
 interface WorkflowInput {
@@ -101,6 +111,21 @@ type StepTool =
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
       "description": "Semver version"
+    },
+    "branding": {
+      "type": "object",
+      "description": "Icon and accent color for the Workflow Store",
+      "properties": {
+        "icon": {
+          "type": "string",
+          "description": "Predefined Lucide icon name"
+        },
+        "color": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Hex color code for the icon accent"
+        }
+      }
     },
     "inputs": {
       "type": "object",

@@ -67,14 +67,6 @@
   letter-spacing: 0.05em;
 }
 
-/* ── Hero gradient text ── */
-.hero-gradient-text {
-  background: linear-gradient(135deg, #00D4AA 0%, #40E0FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* ── Feature cards ── */
 [data-theme='dark'] .feature-card {
   background-color: #112733;

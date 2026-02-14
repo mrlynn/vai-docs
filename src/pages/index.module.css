@@ -7,15 +7,8 @@
 .heroLogo {
   width: 180px;
   height: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   filter: drop-shadow(0 0 40px rgba(0, 212, 170, 0.3));
-}
-
-.heroTitle {
-  font-size: 5rem;
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  font-family: 'Source Code Pro', 'SF Mono', 'Fira Code', monospace;
 }
 
 .heroSubtitle {
