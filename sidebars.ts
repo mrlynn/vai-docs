@@ -163,6 +163,7 @@ const sidebars: SidebarsConfig = {
             'guides/workflows/overview',
             'guides/workflows/schema-reference',
             'guides/workflows/writing-workflows',
+            'guides/workflows/node-reference',
             'guides/workflows/built-in-templates',
             'guides/workflows/template-expressions',
             'guides/workflows/community-workflows',
