@@ -231,6 +231,13 @@ const sidebars: SidebarsConfig = {
         'guides/n8n-integration',
         'guides/desktop-app',
         'guides/web-playground',
+        {
+          type: 'category',
+          label: 'Demos',
+          items: [
+            'guides/demos/cost-optimizer',
+          ],
+        },
       ],
     },
     {

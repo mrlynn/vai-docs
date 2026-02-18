@@ -138,22 +138,28 @@ vai mcp --transport http --port 3100
 
 ## All Variables Summary
 
-| Variable | Category | Description |
-|----------|----------|-------------|
-| `VOYAGE_API_KEY` | Core | Voyage AI API key |
-| `MONGODB_URI` | Core | MongoDB Atlas connection string |
-| `VAI_DEFAULT_DB` | Database | Default database name |
-| `VAI_DEFAULT_COLLECTION` | Database | Default collection name |
-| `VAI_LLM_PROVIDER` | Chat | LLM provider (anthropic, openai, ollama) |
-| `VAI_LLM_API_KEY` | Chat | LLM provider API key |
-| `VAI_LLM_MODEL` | Chat | LLM model name |
-| `VAI_LLM_BASE_URL` | Chat | Ollama server URL |
-| `VAI_CHAT_HISTORY` | Chat | Enable chat history persistence |
-| `VAI_CHAT_HISTORY_DB` | Chat | Database for chat history |
-| `VAI_CHAT_MAX_DOCS` | Chat | Max documents per query |
-| `VAI_CHAT_MAX_TURNS` | Chat | Max conversation turns |
-| `VAI_MCP_VERBOSE` | MCP | Verbose MCP logging |
-| `VAI_MCP_SERVER_KEY` | MCP | HTTP transport auth token |
+| Variable | Category | Config Key Equivalent | Description |
+|----------|----------|----------------------|-------------|
+| `VOYAGE_API_KEY` | Core | `api-key` | Voyage AI API key |
+| `VOYAGE_API_BASE` | Core | `base-url` | API endpoint override |
+| `MONGODB_URI` | Core | `mongodb-uri` | MongoDB Atlas connection string |
+| `VAI_DEFAULT_DB` | Database | `default-db` | Default database name |
+| `VAI_DEFAULT_COLLECTION` | Database | `default-collection` | Default collection name |
+| `VAI_LLM_PROVIDER` | Chat | `llm-provider` | LLM provider (anthropic, openai, ollama) |
+| `VAI_LLM_API_KEY` | Chat | `llm-api-key` | LLM provider API key |
+| `VAI_LLM_MODEL` | Chat | `llm-model` | LLM model name |
+| `VAI_LLM_BASE_URL` | Chat | `llm-base-url` | Ollama server URL |
+| `VAI_CHAT_HISTORY` | Chat | — | Enable chat history persistence |
+| `VAI_CHAT_HISTORY_DB` | Chat | — | Database for chat history |
+| `VAI_CHAT_MAX_DOCS` | Chat | — | Max documents per query |
+| `VAI_CHAT_MAX_TURNS` | Chat | — | Max conversation turns |
+| `VAI_TELEMETRY` | Privacy | `telemetry` | Disable telemetry (`0` or `false`) |
+| `VAI_MCP_VERBOSE` | MCP | — | Verbose MCP logging |
+| `VAI_MCP_SERVER_KEY` | MCP | — | HTTP transport auth token |
+
+:::note
+Variables marked with **—** in the Config Key column are environment-variable-only settings with no `vai config set` equivalent. Chat history and MCP settings are typically set per-environment rather than globally.
+:::
 
 ## Config Store Commands
 
@@ -170,8 +176,8 @@ echo "your-key" | vai config set api-key --stdin
 # Get values (secrets are masked)
 vai config get api-key
 
-# List all config
-vai config list
+# Get all config values
+vai config get
 
 # Delete a value
 vai config delete api-key
