@@ -45,11 +45,11 @@ vai config set mongodb-uri "mongodb+srv://..."
 # Read from stdin (avoids key in shell history)
 echo "your-key" | vai config set api-key --stdin
 
-# Get values (secrets are masked)
+# Get a value (secrets are masked)
 vai config get api-key
 
-# List all config
-vai config list
+# Get all config values
+vai config get
 
 # Delete a value
 vai config delete api-key
@@ -62,6 +62,26 @@ vai config reset
 ```
 
 Config is stored at `~/.vai/config.json`. Sensitive values are masked when displayed.
+
+### All Config Keys
+
+| Key | Description | Example |
+|-----|-------------|---------|
+| `api-key` | Voyage AI API key | `vai config set api-key pa-...` |
+| `mongodb-uri` | MongoDB Atlas connection string | `vai config set mongodb-uri "mongodb+srv://..."` |
+| `base-url` | Override API endpoint | `vai config set base-url https://ai.mongodb.com/v1` |
+| `default-model` | Default embedding model | `vai config set default-model voyage-3` |
+| `default-dimensions` | Default output dimensions | `vai config set default-dimensions 512` |
+| `default-db` | Default MongoDB database | `vai config set default-db my_knowledge_base` |
+| `default-collection` | Default MongoDB collection | `vai config set default-collection documents` |
+| `llm-provider` | LLM provider (`anthropic`, `openai`, `ollama`) | `vai config set llm-provider anthropic` |
+| `llm-api-key` | LLM provider API key | `vai config set llm-api-key sk-...` |
+| `llm-model` | LLM model override | `vai config set llm-model claude-sonnet-4-5-20250929` |
+| `llm-base-url` | LLM endpoint override | `vai config set llm-base-url http://localhost:11434` |
+| `show-cost` | Show cost estimates after operations | `vai config set show-cost true` |
+| `telemetry` | Anonymous usage telemetry | `vai config set telemetry false` |
+
+The `default-db` and `default-collection` keys are particularly useful — set them once and all workflows, `vai query`, `vai store`, and other database commands use them automatically. The desktop app's **Settings → Database** page also reads and writes these values.
 
 ## Credential Resolution
 

@@ -14,7 +14,6 @@ Manage persistent configuration stored in `~/.vai/config.json`. Set API keys, de
 vai config set <key> [value]
 vai config get [key]
 vai config delete <key>
-vai config list
 vai config path
 vai config reset
 ```
@@ -28,9 +27,8 @@ vai config reset
 | Subcommand | Description |
 |------------|-------------|
 | `set <key> [value]` | Set a config value (omit value to read from stdin) |
-| `get [key]` | Get a value (or all values if no key) |
+| `get [key]` | Get a value, or all values if no key is specified |
 | `delete <key>` | Remove a config value |
-| `list` | Show all config values |
 | `path` | Show config file path |
 | `reset` | Delete all configuration |
 
@@ -40,13 +38,17 @@ vai config reset
 |-----|-------------|
 | `api-key` | Voyage AI API key |
 | `mongodb-uri` | MongoDB Atlas connection string |
+| `base-url` | Voyage AI API base URL (override for Atlas AI endpoint) |
 | `default-model` | Default embedding model |
 | `default-dimensions` | Default output dimensions |
-| `base-url` | Voyage AI API base URL |
+| `default-db` | Default MongoDB database for workflows and commands |
+| `default-collection` | Default MongoDB collection for workflows and commands |
 | `llm-provider` | LLM provider for chat: `anthropic`, `openai`, `ollama` |
 | `llm-api-key` | LLM API key |
 | `llm-model` | LLM model name |
 | `llm-base-url` | LLM base URL (for Ollama) |
+| `show-cost` | Show cost estimates after operations (`true`/`false`) |
+| `telemetry` | Enable/disable anonymous usage telemetry (`true`/`false`) |
 
 ## Examples
 
@@ -68,10 +70,19 @@ vai config set mongodb-uri "mongodb+srv://user:pass@cluster.mongodb.net"
 vai config set default-model voyage-4-lite
 ```
 
+### Set default database and collection
+
+```bash
+vai config set default-db my_knowledge_base
+vai config set default-collection documents
+```
+
+This removes the need to specify `--db` and `--collection` on every command. Workflows, `vai query`, `vai store`, and other database commands will use these defaults automatically.
+
 ### View all config
 
 ```bash
-vai config list
+vai config get
 ```
 
 ### Show config file location
