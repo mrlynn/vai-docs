@@ -110,9 +110,20 @@ Sign up at [dash.voyageai.com](https://dash.voyageai.com/), then copy your API k
 vai config set api-key YOUR_KEY
 ```
 
+### Can I use vai without a Voyage AI API key?
+
+Yes, for local embedding workflows. In `v1.31.0`, vai supports local `voyage-4-nano` inference through a lightweight Python bridge:
+
+```bash
+vai nano setup
+vai embed "Hello, world" --local
+```
+
+You still need a Voyage AI API key for API-backed embedding, reranking, query workflows, and cloud-based model usage.
+
 ### Does vai work without MongoDB?
 
-Yes, partially. Commands like `vai embed`, `vai rerank`, `vai similarity`, `vai models`, `vai explain`, and `vai benchmark` work with just a Voyage AI API key. Storage, search, ingestion, and chat features require a MongoDB Atlas connection string.
+Yes, partially. Local `voyage-4-nano` embedding works without MongoDB, and API-backed commands like `vai rerank`, `vai similarity`, `vai models`, `vai explain`, and parts of `vai benchmark` can work without it as well. Storage, search, ingestion, and chat features still require a MongoDB Atlas connection string.
 
 ### What file types does vai support for ingestion?
 
@@ -143,11 +154,12 @@ vai estimate --docs 100000 --queries 1000000 --months 12
 | `voyage-4-large` | Best quality, general purpose | $0.12 |
 | `voyage-4` | Balanced quality and cost | $0.06 |
 | `voyage-4-lite` | High-volume, budget-conscious | $0.02 |
+| `voyage-4-nano` | Local inference, zero-cost experimentation | Free (open-weight) |
 | `voyage-code-3` | Code search and retrieval | $0.18 |
 | `voyage-finance-2` | Financial documents | Domain pricing |
 | `voyage-law-2` | Legal documents | Domain pricing |
 
-For most use cases, start with `voyage-4-large`. Switch to `voyage-4-lite` if cost is a concern, or use asymmetric retrieval to get the best of both.
+For most hosted production use cases, start with `voyage-4-large`. Start with `voyage-4-nano` if you want a local-first onboarding path, then move to `voyage-4-lite` or `voyage-4-large` as your workload grows.
 
 See [Choosing a Model](/docs/models/choosing-a-model) for a full guide.
 
@@ -263,9 +275,10 @@ vai sends data only to the services you explicitly configure:
 
 ### Can I keep everything local?
 
-Partially. If you use **Ollama** as your LLM provider, chat conversations never leave your machine. However, Voyage AI embeddings and reranking require API calls to Voyage AI's servers, and vector search requires MongoDB Atlas.
+Partially. In `v1.31.0`, embeddings can stay local if you use `voyage-4-nano`. If you use **Ollama** as your LLM provider, chat generation can stay local too. However, Voyage AI reranking and API-backed embedding still require network calls, and vector search still requires MongoDB Atlas unless you are only generating embeddings locally.
 
 ```bash
+vai nano setup
 vai config set llm-provider ollama
 vai config set llm-model llama3.1
 ```

@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Command Reference
 
-vai provides 33 commands organized by function. Every command supports `--help` for detailed usage.
+vai provides a broad CLI surface organized by function. Every command supports `--help` for detailed usage.
 
 ## Project Setup
 
@@ -29,6 +29,7 @@ vai provides 33 commands organized by function. Every command supports `--help` 
 
 | Command | Description |
 |---------|-------------|
+| [`vai nano`](/docs/commands/embeddings/nano) | Set up and manage local `voyage-4-nano` inference |
 | [`vai embed`](/docs/commands/embeddings/embed) | Generate vector embeddings for text |
 | [`vai rerank`](/docs/commands/embeddings/rerank) | Rerank documents by relevance to a query |
 | [`vai similarity`](/docs/commands/embeddings/similarity) | Compare text similarity using cosine distance |

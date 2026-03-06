@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # vai explain
 
-Learn about embeddings, reranking, RAG, vector search, and more. Covers 30+ topics with explanations, key points, try-it commands, and links to further reading.
+Learn about embeddings, local inference, reranking, RAG, vector search, and more. Covers 30+ topics with explanations, key points, try-it commands, and links to further reading.
 
 <Tabs>
 <TabItem value="cli" label="CLI" default>
@@ -64,6 +64,12 @@ vai explain reranking
 vai explain shared-space
 ```
 
+### Learn about nano and local inference
+
+```bash
+vai explain nano
+```
+
 ### JSON output
 
 ```bash
@@ -112,6 +118,7 @@ Topics include (non-exhaustive):
 - `embeddings` — What are vector embeddings?
 - `reranking` — Two-stage retrieval with rerankers
 - `shared-space` — Asymmetric retrieval across Voyage 4 models
+- `nano` — Local inference, the Python bridge, and the local-to-API workflow
 - `cosine-similarity` — How similarity scoring works
 - `input-types` — Query vs. document input types
 - `quantization` — Reducing embedding size with int8/binary
@@ -128,3 +135,4 @@ Run `vai explain` to see the full list with summaries.
 
 - [`vai models`](./models) — See available models
 - [`vai demo`](./demo) — Interactive walkthrough of vai features
+- [Local Inference Guide](/docs/guides/local-inference/overview) — Understand nano, shared space, and setup flow

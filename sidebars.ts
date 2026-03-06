@@ -72,6 +72,7 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Embeddings',
           items: [
+            'commands/embeddings/nano',
             'commands/embeddings/embed',
             'commands/embeddings/rerank',
             'commands/embeddings/similarity',
@@ -180,6 +181,14 @@ const sidebars: SidebarsConfig = {
             'guides/mcp-server/transport-modes',
             'guides/mcp-server/authentication',
             'guides/mcp-server/testing',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Local Inference',
+          items: [
+            'guides/local-inference/overview',
+            'guides/local-inference/setup-and-usage',
           ],
         },
         {

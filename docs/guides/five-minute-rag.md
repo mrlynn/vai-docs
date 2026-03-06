@@ -11,8 +11,13 @@ This guide takes you from a folder of documents to a fully searchable vector dat
 ## Prerequisites
 
 - vai installed (`npm install -g voyageai-cli`)
-- Voyage AI API key ([get one free](https://dash.voyageai.com))
 - MongoDB Atlas cluster ([free tier](https://www.mongodb.com/atlas))
+- Python 3.9+ if you want to use local `voyage-4-nano` inference
+- Voyage AI API key ([get one free](https://dash.voyageai.com)) if you want API-backed embedding and reranking
+
+:::tip Local-first option
+If you want a zero-API-key ingestion path, run `vai nano setup` first and add `--local` to your `vai pipeline` command.
+:::
 
 ## Step 1: Set Credentials
 
@@ -37,11 +42,17 @@ Point vai at a directory of documents:
 vai pipeline ./docs/ --db myapp --collection knowledge --create-index
 ```
 
+Or use local nano inference for the embedding step:
+
+```bash
+vai pipeline ./docs/ --local --db myapp --collection knowledge --create-index
+```
+
 This single command:
 
 1. **Reads** all supported files (`.txt`, `.md`, `.html`, `.json`, `.jsonl`, `.pdf`)
 2. **Chunks** each file using the recursive strategy
-3. **Embeds** chunks in batches with `voyage-4-large`
+3. **Embeds** chunks in batches with `voyage-4-large`, or locally with `voyage-4-nano` when `--local` is enabled
 4. **Stores** vectors in MongoDB Atlas with source metadata
 5. **Creates** a vector search index (with `--create-index`)
 
@@ -86,6 +97,15 @@ vai pipeline ./docs/ --model voyage-4-lite
 ```
 
 Use `voyage-4-lite` for budget-friendly embedding or `voyage-4` for balanced quality/cost.
+
+### Local model path
+
+```bash
+vai nano setup
+vai pipeline ./docs/ --local --model voyage-4-nano --db myapp --collection knowledge
+```
+
+Use this when you want local embedding with no Voyage API key for ingestion.
 
 ### Skip Reranking
 

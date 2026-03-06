@@ -9,6 +9,8 @@ slug: /
 
 **vai** (voyageai-cli) is a command-line toolkit for building semantic search pipelines with [Voyage AI](https://www.mongodb.com/docs/voyageai/) embeddings and [MongoDB Atlas Vector Search](https://www.mongodb.com/docs/atlas/atlas-vector-search/). It handles the entire RAG workflow: chunking documents, generating embeddings, storing vectors, and querying with two-stage retrieval.
 
+`v1.31.0` introduces `voyage-4-nano` local inference, so you can get started with zero Voyage API keys using a lightweight Python bridge, then scale to API-backed Voyage 4 models later without changing the broader workflow.
+
 :::note Community Tool
 vai is an independent, community-built tool, not an official product of MongoDB, Inc. or Voyage AI.
 :::
@@ -17,9 +19,11 @@ vai is an independent, community-built tool, not an official product of MongoDB,
 
 ```bash
 npm install -g voyageai-cli
+vai nano setup
+vai embed "What is vector search?" --local
 ```
 
-Or run without installing:
+Or start with the API-backed quickstart:
 
 ```bash
 npx voyageai-cli@latest quickstart
@@ -27,18 +31,19 @@ npx voyageai-cli@latest quickstart
 
 ## What vai Does
 
-vai provides **33 commands** organized around the RAG pipeline:
+vai provides commands across the full RAG pipeline:
 
 | Stage | What happens | Commands |
 |-------|-------------|----------|
 | **Chunk** | Split documents into embedding-sized pieces | `vai chunk`, `vai pipeline` |
-| **Embed** | Generate vector embeddings with Voyage AI | `vai embed`, `vai pipeline` |
+| **Embed** | Generate vector embeddings locally with nano or via the Voyage AI API | `vai embed`, `vai pipeline`, `vai nano` |
 | **Store** | Save vectors to MongoDB Atlas | `vai store`, `vai ingest`, `vai pipeline` |
 | **Search** | Find similar documents via vector search | `vai search`, `vai query` |
 | **Rerank** | Re-score results with a cross-encoder | `vai rerank`, `vai query` |
 
 Beyond the core pipeline, vai includes:
 
+- **Local Inference**: Run `voyage-4-nano` on your own machine with `vai nano setup` and `--local`
 - **Chat**: Conversational RAG with Anthropic, OpenAI, or Ollama (`vai chat`)
 - **Workflows**: Composable, multi-step RAG pipelines defined as JSON (`vai workflow run`)
 - **MCP Server**: 11 tools for AI-powered editors like Claude, Cursor, and VS Code (`vai mcp`)
@@ -51,11 +56,11 @@ Beyond the core pipeline, vai includes:
 
 ### CLI
 
-The primary interface. 33 commands for every step of the RAG pipeline.
+The primary interface for local and API-backed workflows.
 
 ```bash
-vai pipeline ./docs/ --db myapp --collection knowledge --create-index
-vai query "How do I configure replica sets?"
+vai nano setup
+vai pipeline ./docs/ --local --db myapp --collection knowledge --create-index
 ```
 
 ### Web Playground
@@ -73,6 +78,7 @@ A standalone Electron app with secure keychain storage, dark/light themes, and M
 ## Next Steps
 
 - **[Installation](/docs/getting-started/installation)**: Prerequisites and install options
+- **[Local Inference Guide](/docs/guides/local-inference/overview)**: Set up nano and understand the Python bridge
 - **[Quickstart](/docs/getting-started/quickstart)**: Your first search in 2 minutes
 - **[5-Minute RAG Pipeline](/docs/guides/five-minute-rag)**: End-to-end tutorial
-- **[Command Reference](/docs/commands/overview)**: All 33 commands at a glance
+- **[Command Reference](/docs/commands/overview)**: Browse the full CLI surface

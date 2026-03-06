@@ -90,8 +90,8 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     announcementBar: {
-      id: 'v1_25',
-      content: 'vai v1.29.0 is here with agentic workflows, chat, and MCP server. <a href="/blog/workflows-launch">Read the release notes</a>.',
+      id: 'v1_31_0',
+      content: 'vai v1.31.0 is here with voyage-4-nano local inference, a lightweight Python bridge, and zero-API-key onboarding. <a href="/blog/v1-31-0-nano-local-inference">Read the release notes</a>.',
       backgroundColor: '#00D4AA',
       textColor: '#001E2B',
       isCloseable: true,

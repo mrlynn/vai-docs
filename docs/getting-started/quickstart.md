@@ -12,9 +12,22 @@ The fastest way to get started is the interactive quickstart:
 vai quickstart
 ```
 
-This walks you through setting up credentials, embedding your first document, and running a search query. If you prefer to do it manually, follow the steps below.
+This walks you through setting up local inference or API-backed credentials, embedding your first document, and running a search query. If you prefer to do it manually, follow the steps below.
+
+## Fastest Local Start
+
+If you want the shortest path to a working embedding in `v1.31.0`, start with local nano inference:
+
+```bash
+vai nano setup
+vai embed "What is semantic search?" --local
+```
+
+This uses `voyage-4-nano` through vai's lightweight Python bridge and does not require a Voyage API key.
 
 ## Step 1: Set Credentials
+
+For the full MongoDB-backed quickstart, configure:
 
 ```bash
 export VOYAGE_API_KEY="your-key"
@@ -37,7 +50,11 @@ This creates a `.vai.json` file with sensible defaults (model, database, collect
 vai embed "MongoDB Atlas provides fully managed cloud databases with built-in vector search."
 ```
 
-You should see the embedding vector printed to the terminal, confirming your API key works.
+You should see the embedding vector printed to the terminal, confirming the embedding path is working. To test local inference instead, run:
+
+```bash
+vai embed "MongoDB Atlas provides fully managed cloud databases with built-in vector search." --local
+```
 
 ## Step 4: Store and Search
 
@@ -69,6 +86,7 @@ vai query "How does authentication work?" --db demo --collection knowledge
 ## What's Next
 
 - **[5-Minute RAG Pipeline](/docs/guides/five-minute-rag)**: Expanded tutorial with real documents
+- **[Local Inference Guide](/docs/guides/local-inference/overview)**: Learn how nano and the Python bridge work
 - **[Configuration](/docs/getting-started/configuration)**: All environment variables and options
-- **[Command Reference](/docs/commands/overview)**: Browse all 33 commands
+- **[Command Reference](/docs/commands/overview)**: Browse the full CLI surface
 - **[Chat](/docs/guides/chat/overview)**: Talk to your knowledge base with an LLM

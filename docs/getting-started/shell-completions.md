@@ -26,9 +26,9 @@ source ~/.zshrc
 
 ## What Gets Completed
 
-- All 33 commands and their subcommands
+- All vai commands and their subcommands, including `vai nano`
 - Command flags and options
-- Model names (e.g., `voyage-4-large`, `voyage-4-lite`)
+- Model names (e.g., `voyage-4-large`, `voyage-4-lite`, `voyage-4-nano`)
 - Topic names for `vai explain`
 - Chunking strategies for `--strategy`
 
