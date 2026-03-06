@@ -216,7 +216,7 @@ For transparency, here's what the demo costs:
 ## Related Concepts
 
 - **[Shared Embedding Space](../../core-concepts/shared-embedding-space)** — How lite queries work on large-indexed docs
-- **[Asymmetric Retrieval](../../core-concepts/vector-search#asymmetric-models)** — The architectural pattern
+- **[Cost Optimization Guide](../benchmarking/cost-benchmark)** — The asymmetric retrieval pattern and cost trade-offs
 - **[Vector Search](../../core-concepts/vector-search)** — Fundamentals
 - **[Voyage 4 Family](../../models/voyage-4-family)** — Model specifications and token costs
 - **[Web Playground](../web-playground)** — All interactive tabs
@@ -254,6 +254,5 @@ vai demo cost-optimizer
 ## Further Reading
 
 - [`vai demo`](/docs/commands/tools-and-learning/demo) — Command reference
-- [`vai optimize`](/docs/commands/tools-and-learning/optimize) — CLI cost analysis command
-- [`vai playground`](/docs/guides/web-playground) — All playground tabs
 - [Cost Optimization Guide](../benchmarking/cost-benchmark) — Deeper analysis of cost trade-offs
+- [`vai playground`](/docs/guides/web-playground) — All playground tabs
