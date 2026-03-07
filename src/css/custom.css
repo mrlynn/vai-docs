@@ -213,13 +213,26 @@ html.docs-doc-page body::after {
   right: 2rem;
   width: 200px;
   height: 200px;
-  background-image: url('/img/watermark.png');
+  background-image: url('/img/robot/robot-watermark.svg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom right;
-  opacity: 0.05;
+  opacity: 0.06;
   pointer-events: none;
   z-index: 0;
+}
+
+[data-theme='dark'] html.docs-doc-page body::after {
+  opacity: 0.08;
+}
+
+@media (max-width: 996px) {
+  html.docs-doc-page body::after {
+    width: 150px;
+    height: 150px;
+    bottom: 1rem;
+    right: 1rem;
+  }
 }
 
 /* ── Footer ── */

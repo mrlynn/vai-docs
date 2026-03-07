@@ -16,6 +16,7 @@ Complete Phase 1 execution for `vai-docs` `v1.31.0`, covering `voyage-4-nano` lo
   - normalizing release references across the site
 - The Python bridge is user-facing and should be documented explicitly
 - A formal GSD planning structure has been created in-repo
+- The docs should begin carrying the canonical pixel robot brand imagery already used in the CLI so the app, CLI, and documentation feel like one product family
 
 ## Working Assumptions
 
@@ -34,6 +35,6 @@ Complete Phase 1 execution for `vai-docs` `v1.31.0`, covering `voyage-4-nano` lo
 
 ## Next Steps
 
-1. Review the new nano/local inference docs for any wording or IA refinements
-2. Decide whether to extend the local-first framing into additional secondary pages such as use cases and troubleshooting
+1. Review the new reusable robot callout component across docs and blog pages for any copy or density refinements
+2. Decide whether to extend the robot moments into more secondary surfaces such as additional guide overviews or future release-note templates
 3. Continue future release documentation from the existing `.planning` structure

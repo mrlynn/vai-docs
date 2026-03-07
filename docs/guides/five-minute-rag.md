@@ -4,9 +4,25 @@ description: Go from a folder of documents to searchable vector database
 sidebar_position: 1
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 # 5-Minute RAG Pipeline
 
 This guide takes you from a folder of documents to a fully searchable vector database with two-stage retrieval. You'll use four vai commands.
+
+<RobotMomentCallout
+  pose="thinking"
+  eyebrow="Guide moment"
+  title="This is where the robot's thinking and search states make the most sense"
+  ctaLabel="Compare with quickstart"
+  ctaTo="/docs/getting-started/quickstart"
+>
+  <p>
+    The CLI already signals in-progress work during ingestion and retrieval.
+    Using that same robot language in the guide helps the docs feel like a
+    continuation of the live product experience instead of a separate manual.
+  </p>
+</RobotMomentCallout>
 
 ## Prerequisites
 

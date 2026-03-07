@@ -5,11 +5,28 @@ sidebar_position: 1
 slug: /
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 # Welcome to vai
 
 **vai** (voyageai-cli) is a command-line toolkit for building semantic search pipelines with [Voyage AI](https://www.mongodb.com/docs/voyageai/) embeddings and [MongoDB Atlas Vector Search](https://www.mongodb.com/docs/atlas/atlas-vector-search/). It handles the entire RAG workflow: chunking documents, generating embeddings, storing vectors, and querying with two-stage retrieval.
 
 `v1.31.0` introduces `voyage-4-nano` local inference, so you can get started with zero Voyage API keys using a lightweight Python bridge, then scale to API-backed Voyage 4 models later without changing the broader workflow.
+
+<RobotMomentCallout
+  pose="wave"
+  eyebrow="Brand system"
+  title="Meet the pixel robot behind the CLI moments"
+  ctaLabel="See the local inference guide"
+  ctaTo="/docs/guides/local-inference/overview"
+>
+  <p>
+    The same robot used for <code>vai</code> greetings, search, explain, and
+    success states now shows up in the docs too, so onboarding and reference
+    pages feel connected to the product experience instead of standing apart
+    from it.
+  </p>
+</RobotMomentCallout>
 
 :::note Community Tool
 vai is an independent, community-built tool, not an official product of MongoDB, Inc. or Voyage AI.

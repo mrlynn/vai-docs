@@ -4,11 +4,28 @@ description: Understand voyage-4-nano, shared space, and the lightweight Python 
 sidebar_position: 1
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 # Local Inference Overview
 
 `vai v1.31.0` adds local inference with `voyage-4-nano`, giving you a zero-API-key path into Voyage AI embeddings.
 
 Instead of sending every embedding request to the Voyage AI API, vai can now run `voyage-4-nano` on your machine through a lightweight Python bridge. The CLI stays the same. You install the model once with `vai nano setup`, then use `--local` on the commands that support local embedding.
+
+<RobotMomentCallout
+  pose="thinking"
+  eyebrow="Local-first"
+  title="Local inference is the robot's best fit for thoughtful first-run guidance"
+  ctaLabel="Open setup and usage"
+  ctaTo="/docs/guides/local-inference/setup-and-usage"
+>
+  <p>
+    This part of the docs now carries the same “thinking” energy as the CLI
+    because it is the place where users pause to understand what is happening:
+    Python under the hood, shared embedding space across Voyage 4, and a clean
+    path from local experiments to hosted scale.
+  </p>
+</RobotMomentCallout>
 
 ## Why This Matters
 

@@ -5,9 +5,27 @@ authors: [mrlynn]
 tags: [vai, release, local-inference, voyage-4-nano]
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 `vai v1.31.0` adds `voyage-4-nano` local inference, giving developers a zero-API-key path into Voyage AI embeddings through a lightweight Python bridge built directly into the CLI.
 
 <!-- truncate -->
+
+<RobotMomentCallout
+  pose="success"
+  eyebrow="Release moment"
+  title="The docs, CLI, and launch messaging now land as one story"
+  ctaLabel="Go to local inference overview"
+  ctaTo="/docs/guides/local-inference/overview"
+  variant="wide"
+>
+  <p>
+    This release is where the pixel robot and the product story line up cleanly:
+    local-first onboarding, a friendly CLI, and documentation that carries the
+    same visual cues for getting started, understanding the bridge, and shipping
+    a working retrieval flow.
+  </p>
+</RobotMomentCallout>
 
 ## What shipped
 

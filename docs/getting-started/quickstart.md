@@ -4,6 +4,8 @@ description: Your first semantic search in 2 minutes
 sidebar_position: 2
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 # Quickstart
 
 The fastest way to get started is the interactive quickstart:
@@ -13,6 +15,21 @@ vai quickstart
 ```
 
 This walks you through setting up local inference or API-backed credentials, embedding your first document, and running a search query. If you prefer to do it manually, follow the steps below.
+
+<RobotMomentCallout
+  pose="wave"
+  eyebrow="Fastest path"
+  title="Start with the same friendly entry point the CLI is designed around"
+  ctaLabel="Jump to local inference overview"
+  ctaTo="/docs/guides/local-inference/overview"
+>
+  <p>
+    If you are brand new to <code>vai</code>, the local nano path is now the
+    most approachable first moment: install once, run <code>vai nano setup</code>,
+    then embed locally before you decide how much hosted infrastructure you want
+    to turn on.
+  </p>
+</RobotMomentCallout>
 
 ## Fastest Local Start
 

@@ -5,36 +5,104 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
+const robotMoments = [
+  {
+    title: 'Wave people into the product',
+    description:
+      'The same wave pose used for CLI greetings gives docs entry points the same friendly first-run energy.',
+    image: '/img/robot/robot-wave.svg',
+    link: '/docs/getting-started/installation',
+    cta: 'Start with installation',
+    label: 'wave',
+  },
+  {
+    title: 'Show thinking where work is in flight',
+    description:
+      'Guides, explain pages, and walkthroughs can reuse the search and thinking language users already see in the CLI.',
+    image: '/img/robot/robot-thinking.svg',
+    link: '/docs/commands/tools-and-learning/explain',
+    cta: 'Explore explain topics',
+    label: 'thinking',
+  },
+  {
+    title: 'Land on success moments',
+    description:
+      'Release notes, quickstarts, and finish states feel more cohesive when the docs celebrate successful outcomes the same way the tool does.',
+    image: '/img/robot/robot-success.svg',
+    link: '/blog/v1-31-0-nano-local-inference',
+    cta: 'Read the latest release',
+    label: 'success',
+  },
+] as const;
+
 function HeroSection() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <header className={styles.hero}>
-      <div className="container">
-        <img
-          src="/img/V.png"
-          alt="vai"
-          className={styles.heroLogo}
-        />
-        <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-        <div className={styles.installCommand}>
-          <code>npm install -g voyageai-cli</code>
+      <div className={clsx('container', styles.heroLayout)}>
+        <div className={styles.heroContent}>
+          <div className={styles.heroEyebrow}>
+            <img src="/img/V.png" alt="" className={styles.heroMark} />
+            Pixel brand continuity across app, CLI, and docs
+          </div>
+          <h1 className={styles.heroTitle}>
+            The same robot that guides <code>vai</code> now carries the docs.
+          </h1>
+          <p className={styles.heroSubtitle}>
+            {siteConfig.tagline}. The pixel robot already gives the CLI a
+            memorable set of moments for greeting, thinking, searching, and
+            success. Bringing those same poses into the docs makes the whole
+            brand feel like one product family instead of separate surfaces.
+          </p>
+          <div className={styles.heroTags}>
+            <span>Onboarding</span>
+            <span>Guides</span>
+            <span>Release notes</span>
+          </div>
+          <div className={styles.installCommand}>
+            <code>npm install -g voyageai-cli</code>
+          </div>
+          <div className={styles.heroButtons}>
+            <Link
+              className={clsx('button', styles.heroPrimary)}
+              to="/docs/">
+              Get Started
+            </Link>
+            <Link
+              className={clsx('button', styles.heroSecondary)}
+              to="/docs/guides/five-minute-rag">
+              5-Minute RAG Pipeline
+            </Link>
+            <Link
+              className={clsx('button', styles.heroSecondary)}
+              href="https://github.com/mrlynn/voyageai-cli">
+              GitHub
+            </Link>
+          </div>
         </div>
-        <div className={styles.heroButtons}>
-          <Link
-            className={clsx('button', styles.heroPrimary)}
-            to="/docs/">
-            Get Started
-          </Link>
-          <Link
-            className={clsx('button', styles.heroSecondary)}
-            to="/docs/guides/five-minute-rag">
-            5-Minute RAG Pipeline
-          </Link>
-          <Link
-            className={clsx('button', styles.heroSecondary)}
-            href="https://github.com/mrlynn/voyageai-cli">
-            GitHub
-          </Link>
+        <div className={styles.heroVisual}>
+          <div className={styles.robotPanel}>
+            <div className={styles.robotPanelTop}>
+              <span />
+              <span />
+              <span />
+              <div className={styles.robotPanelLabel}>robot/wave</div>
+            </div>
+            <img
+              src="/img/robot/robot-wave.svg"
+              alt="vai pixel robot waving"
+              className={styles.heroRobot}
+            />
+            <p className={styles.robotPanelText}>
+              A shared visual language for hello, in-progress work, and shipped
+              results.
+            </p>
+            <div className={styles.robotPanelLegend}>
+              <span>wave</span>
+              <span>thinking</span>
+              <span>success</span>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -73,6 +141,42 @@ function FeaturesSection() {
                 <h3 className={styles.featureTitle}>{feature.title}</h3>
                 <p className={styles.featureDescription}>{feature.description}</p>
               </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RobotMomentsSection() {
+  return (
+    <section className={styles.robotMomentsSection}>
+      <div className="container">
+        <div className={styles.robotMomentsIntro}>
+          <p className={styles.sectionEyebrow}>Brand imagery</p>
+          <h2 className={styles.robotMomentsTitle}>
+            Carry the same moments from the terminal into the docs
+          </h2>
+          <p className={styles.robotMomentsDescription}>
+            The CLI already gives the robot a job: greet people, show work in
+            flight, and celebrate clean finishes. The docs can reuse those same
+            visual cues in the places users learn, search, and ship.
+          </p>
+        </div>
+        <div className={styles.robotMomentGrid}>
+          {robotMoments.map((moment) => (
+            <Link
+              key={moment.title}
+              to={moment.link}
+              className={styles.robotMomentCard}>
+              <div className={styles.robotMomentArt}>
+                <img src={moment.image} alt="" />
+              </div>
+              <p className={styles.robotMomentLabel}>{moment.label}</p>
+              <h3>{moment.title}</h3>
+              <p>{moment.description}</p>
+              <span className={styles.robotMomentCta}>{moment.cta}</span>
             </Link>
           ))}
         </div>
@@ -168,6 +272,7 @@ export default function Home(): React.JSX.Element {
       description={siteConfig.tagline}>
       <HeroSection />
       <main>
+        <RobotMomentsSection />
         <FeaturesSection />
         <TerminalSection />
         <CapabilitiesSection />

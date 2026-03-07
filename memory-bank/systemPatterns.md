@@ -44,6 +44,18 @@ The new docs should consistently reinforce:
 - the lightweight Python bridge is part of the implementation and onboarding story
 - local-first does not replace API workflows, it complements them
 
+## Brand Imagery Pattern
+
+The docs site can carry the `vai` pixel robot brand system in a restrained way across key surfaces:
+
+- homepage hero and feature storytelling
+- docs landing content blocks
+- subtle global page chrome such as watermarks
+
+When possible, robot imagery should be derived from the canonical CLI robot source in `voyageai-cli` rather than redrawn independently, so the app, CLI, and docs stay visually aligned.
+
+For repeated docs and blog usage, prefer a shared React/MDX callout component over ad hoc HTML blocks so guide, quickstart, and release-note surfaces keep a consistent robot treatment.
+
 ## Planning Pattern
 
 This repo previously had no Memory Bank or `.planning` structure. Planning artifacts should now capture:

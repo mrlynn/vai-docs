@@ -23,11 +23,17 @@ Completed:
 - updated `docs/getting-started/quickstart.md`, `docs/guides/five-minute-rag.md`, `docs/faq.md`, and `docs/getting-started/shell-completions.md` for consistency
 - added the `v1.31.0` release-note blog post at `blog/2026-03-06-v1-31-0-nano-local-inference.md`
 - updated sidebar navigation for the new local inference docs
+- added canonical pixel robot SVG assets derived from the CLI robot source under `static/img/robot/`
+- updated the homepage and docs landing page to carry the robot brand imagery across docs entry points
+- updated the docs page watermark to use the robot for subtle site-wide brand continuity
+- added a reusable `RobotMomentCallout` component for shared robot branding in MDX and blog content
+- extended robot callouts into the `v1.31.0` release post, `Quickstart`, `5-Minute RAG Pipeline`, and local inference overview
 - validated the docs repo with `npm run typecheck` and `npm run build`
 
 Follow-up candidates:
 
 - extend local-first messaging into more secondary pages if desired
+- extend robot moments into additional guide or blog templates if the docs brand system grows
 - add deeper docs for local query, benchmarking, and migration patterns if the feature surface expands
 
 ## Risks
