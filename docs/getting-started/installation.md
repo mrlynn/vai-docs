@@ -4,7 +4,24 @@ description: Install vai and set up prerequisites
 sidebar_position: 1
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 # Installation
+
+<RobotMomentCallout
+  pose="wave"
+  eyebrow="First run"
+  title="Install once, then choose API keys or local nano"
+  ctaLabel="Jump to quickstart"
+  ctaTo="/docs/getting-started/quickstart"
+>
+  <p>
+    Same CLI whether you start with{' '}
+    <code>voyage-4-nano</code> locally or a Voyage API key. This page lines up
+    prerequisites so the rest of the docs can focus on what you are building,
+    not on fighting your environment.
+  </p>
+</RobotMomentCallout>
 
 ## Prerequisites
 

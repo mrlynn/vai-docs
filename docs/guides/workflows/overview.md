@@ -4,9 +4,25 @@ description: Composable multi-step RAG pipelines
 sidebar_position: 1
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 # Workflows Guide
 
 vai workflows let you define multi-step RAG pipelines as JSON files. Steps execute in dependency order with automatic parallelization of independent steps.
+
+<RobotMomentCallout
+  pose="success"
+  eyebrow="Portable pipelines"
+  title="JSON workflows are shareable runbooks for RAG"
+  ctaLabel="Schema reference"
+  ctaTo="/docs/guides/workflows/schema-reference"
+>
+  <p>
+    Define steps once, validate dependencies, run the same file from CI or a
+    laptop. The robot shows up here because this is where repetitive demos turn
+    into something teammates can reuse without re-learning the CLI order.
+  </p>
+</RobotMomentCallout>
 
 ## Quick Start
 

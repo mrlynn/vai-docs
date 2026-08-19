@@ -4,7 +4,23 @@ description: Environment variables, config store, and credential management
 sidebar_position: 3
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 # Configuration
+
+<RobotMomentCallout
+  pose="thinking"
+  eyebrow="One resolution order"
+  title="Flags beat env, env beats files, files beat project defaults"
+  ctaLabel="Project config (.vai.json)"
+  ctaTo="/docs/getting-started/project-config"
+>
+  <p>
+    When something behaves differently on your machine than in docs, start here.
+    The same rules apply across CLI, playground, and MCP defaults so you are not
+    learning three mental models.
+  </p>
+</RobotMomentCallout>
 
 vai resolves configuration from multiple sources, in this priority order:
 

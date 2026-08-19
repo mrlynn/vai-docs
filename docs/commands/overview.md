@@ -41,6 +41,7 @@ vai provides a broad CLI surface organized by function. Every command supports `
 | [`vai store`](/docs/commands/data-management/store) | Embed and store a single document |
 | [`vai ingest`](/docs/commands/data-management/ingest) | Bulk import documents from JSONL with progress tracking |
 | [`vai search`](/docs/commands/data-management/search) | Vector similarity search against MongoDB Atlas |
+| [`vai code-search`](/docs/commands/data-management/code-search) | Semantic code search — index a repo, refresh incrementally, query by meaning |
 | [`vai index`](/docs/commands/data-management/index-cmd) | Manage vector search indexes (create, list, delete) |
 | [`vai purge`](/docs/commands/data-management/purge) | Remove embeddings by model, date, source, or staleness |
 | [`vai refresh`](/docs/commands/data-management/refresh) | Re-embed documents with a new model or dimensions |
@@ -57,7 +58,7 @@ vai provides a broad CLI surface organized by function. Every command supports `
 
 | Command | Description |
 |---------|-------------|
-| [`vai mcp`](/docs/commands/mcp) | Start the Model Context Protocol server (11 tools for AI editors) |
+| [`vai mcp`](/docs/commands/mcp) | Start the Model Context Protocol server (22 tools for AI editors) |
 | [`vai mcp install`](/docs/commands/mcp/mcp-install) | Auto-install MCP server into Claude, Cursor, Windsurf, VS Code |
 | [`vai mcp uninstall`](/docs/commands/mcp/mcp-uninstall) | Remove MCP server from AI tool configs |
 | [`vai mcp status`](/docs/commands/mcp/mcp-status) | Show MCP installation status across all supported tools |

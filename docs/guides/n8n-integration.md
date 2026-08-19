@@ -129,7 +129,7 @@ sequenceDiagram
 
 ## Available Tools
 
-Once connected, the AI agent can call any of vai's 11 MCP tools:
+Once connected, the AI agent can call any of vai's **22** MCP tools:
 
 ### Retrieval
 
@@ -145,22 +145,50 @@ Once connected, the AI agent can call any of vai's 11 MCP tools:
 |------|----------|
 | `vai_embed` | Generate a vector embedding for text |
 | `vai_similarity` | Compare two texts semantically (cosine similarity) |
+| `vai_multimodal_embed` | Embed text and/or image or video (base64 data URLs) |
 
-### Data Management
+### Data management
 
 | Tool | Use case |
 |------|----------|
 | `vai_ingest` | Chunk, embed, and store a document in MongoDB |
 | `vai_collections` | List available collections and their indexes |
+| `vai_models` | List Voyage AI models with pricing and capabilities |
 
 ### Utility
 
 | Tool | Use case |
 |------|----------|
-| `vai_models` | List Voyage AI models with pricing and capabilities |
 | `vai_estimate` | Estimate costs for embedding operations at scale |
 | `vai_topics` | Browse available educational topics |
 | `vai_explain` | Get detailed explanations of RAG/embedding concepts |
+
+### Workspace (local tree index)
+
+| Tool | Use case |
+|------|----------|
+| `vai_index_workspace` | Chunk and embed files from a workspace path |
+| `vai_search_code` | Semantic search over that workspace index |
+| `vai_explain_code` | Explain a code snippet using retrieved workspace context |
+
+### Code search index (`vai_code_*`)
+
+Same conceptual pipeline as [`vai code-search`](/docs/commands/data-management/code-search): dedicated code chunks and code-oriented embeddings. **`vai_code_search`** is not the same tool as **`vai_search_code`**.
+
+| Tool | Use case |
+|------|----------|
+| `vai_code_index` | Index a directory or GitHub repo into a code-search collection |
+| `vai_code_search` | Semantic search over the code index |
+| `vai_code_query` | RAG-style answers grounded in indexed code |
+| `vai_code_find_similar` | Find indexed chunks similar to a pasted snippet |
+| `vai_code_status` | Stats and vector index readiness |
+
+### Authoring
+
+| Tool | Use case |
+|------|----------|
+| `vai_generate_workflow` | Generate a vai workflow JSON from a description |
+| `vai_validate_workflow` | Validate workflow structure and tool references |
 
 ## Example Workflows
 

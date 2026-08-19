@@ -85,6 +85,7 @@ const sidebars: SidebarsConfig = {
             'commands/data-management/store',
             'commands/data-management/ingest',
             'commands/data-management/search',
+            'commands/data-management/code-search',
             'commands/data-management/index-cmd',
             'commands/data-management/purge',
             'commands/data-management/refresh',

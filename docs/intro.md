@@ -55,7 +55,7 @@ vai provides commands across the full RAG pipeline:
 | **Chunk** | Split documents into embedding-sized pieces | `vai chunk`, `vai pipeline` |
 | **Embed** | Generate vector embeddings locally with nano or via the Voyage AI API | `vai embed`, `vai pipeline`, `vai nano` |
 | **Store** | Save vectors to MongoDB Atlas | `vai store`, `vai ingest`, `vai pipeline` |
-| **Search** | Find similar documents via vector search | `vai search`, `vai query` |
+| **Search** | Find similar documents via vector search | `vai search`, `vai query`, `vai code-search` |
 | **Rerank** | Re-score results with a cross-encoder | `vai rerank`, `vai query` |
 
 Beyond the core pipeline, vai includes:
@@ -63,7 +63,7 @@ Beyond the core pipeline, vai includes:
 - **Local Inference**: Run `voyage-4-nano` on your own machine with `vai nano setup` and `--local`
 - **Chat**: Conversational RAG with Anthropic, OpenAI, or Ollama (`vai chat`)
 - **Workflows**: Composable, multi-step RAG pipelines defined as JSON (`vai workflow run`)
-- **MCP Server**: 11 tools for AI-powered editors like Claude, Cursor, and VS Code (`vai mcp`)
+- **MCP Server**: 22 tools for AI-powered editors like Claude, Cursor, and VS Code (`vai mcp`) — retrieval, embeddings (including multimodal), workspace + dedicated code index, workflows, and more
 - **Benchmarking**: Compare models on your own data (`vai benchmark`)
 - **Evaluation**: Measure retrieval quality with MRR, nDCG, and Recall (`vai eval`)
 - **Code Generation**: Generate production-ready integration code (`vai generate`, `vai scaffold`)

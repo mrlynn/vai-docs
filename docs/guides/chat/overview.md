@@ -4,9 +4,25 @@ description: Conversational RAG with vai chat
 sidebar_position: 1
 ---
 
+import RobotMomentCallout from '@site/src/components/RobotMomentCallout';
+
 # Chat Guide
 
-`vai chat` provides a conversational RAG interface — ask questions about your documents and get grounded answers from an LLM.
+`vai chat` provides a conversational RAG interface: ask questions about your documents and get grounded answers from an LLM.
+
+<RobotMomentCallout
+  pose="thinking"
+  eyebrow="Grounded answers"
+  title="Retrieval first, then the model speaks"
+  ctaLabel="Chat setup"
+  ctaTo="/docs/guides/chat/setup"
+>
+  <p>
+    <code>vai chat</code> wires Atlas vectors and optional rerank into an LLM
+    turn. Sources matter: the better your collection and limits, the less the
+    model has to guess.
+  </p>
+</RobotMomentCallout>
 
 ## How It Works
 

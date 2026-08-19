@@ -22,7 +22,7 @@ vai mcp-server [options]
 - **stdio** (default): Communicates via stdin/stdout JSON-RPC. Used by Claude Desktop, Cursor, and most MCP clients.
 - **http**: Runs an HTTP server with Streamable HTTP transport. Useful for remote access or custom integrations.
 
-The server registers tools across five domains: retrieval, embedding, management, utility, and ingest.
+The server registers **22 tools** across **eight domains**: retrieval, embedding, management, utility, ingest, workspace indexing, code search (MongoDB code index), and workflow authoring.
 
 ## Options
 

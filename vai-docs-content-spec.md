@@ -25,6 +25,21 @@ This document tracks every page in the vai documentation site, its current statu
 - Every command page follows the template: Synopsis, Description, Options, Examples, Related Commands
 - Keep sentences concise. One idea per paragraph.
 
+### Robot guidance panels (`RobotMomentCallout`)
+
+Use the shared component for **narrative pages** where users pause to orient (getting started, guides, conceptual command intros). Do **not** add one to every command leaf or dense API tables, or readers will tune them out.
+
+| Rule | Detail |
+|------|--------|
+| **Density** | Aim for **one panel per page**; at most **two** on long tutorials with clear separation |
+| **`wave`** | Welcome, install path, “start here” energy |
+| **`thinking`** | Tradeoffs, architecture, “why this works this way” |
+| **`success`** | Outcomes, what ship looks like, celebration of finishing a journey |
+| **Eyebrow** | Short category label (a few words, can be title case) |
+| **Title** | User benefit in plain language (not marketing fluff) |
+| **CTA** | Optional. Use when there is an obvious next doc; omit for pure context |
+| **Import** | `import RobotMomentCallout from '@site/src/components/RobotMomentCallout';` at top of the MDX file |
+
 ## Content Sources
 
 | Source | Location | Lines | Used For |
@@ -182,7 +197,7 @@ This document tracks every page in the vai documentation site, its current statu
 | Page | Status | Priority | Source | Notes |
 |------|--------|----------|--------|-------|
 | `docs/api-reference/environment-variables.md` | Done | P0 | README | All env vars |
-| `docs/api-reference/mcp-tools.md` | Scaffolded | P0 | mcp-server.md | 11 MCP tools documented |
+| `docs/api-reference/mcp-tools.md` | Scaffolded | P0 | mcp-server.md | 22 MCP tools documented (grouped by domain) |
 | `docs/api-reference/mcp-tool-parameters.md` | Scaffolded | P0 | mcp-server.md | Parameter schemas |
 | `docs/api-reference/vai-json-schema.md` | Scaffolded | P1 | README | .vai.json schema |
 | `docs/api-reference/workflow-schema.md` | Done | P0 | workflow-spec.md | Workflow JSON schema |

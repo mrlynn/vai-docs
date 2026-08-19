@@ -5,34 +5,10 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
-const robotMoments = [
-  {
-    title: 'Wave people into the product',
-    description:
-      'The same wave pose used for CLI greetings gives docs entry points the same friendly first-run energy.',
-    image: '/img/robot/robot-wave.svg',
-    link: '/docs/getting-started/installation',
-    cta: 'Start with installation',
-    label: 'wave',
-  },
-  {
-    title: 'Show thinking where work is in flight',
-    description:
-      'Guides, explain pages, and walkthroughs can reuse the search and thinking language users already see in the CLI.',
-    image: '/img/robot/robot-thinking.svg',
-    link: '/docs/commands/tools-and-learning/explain',
-    cta: 'Explore explain topics',
-    label: 'thinking',
-  },
-  {
-    title: 'Land on success moments',
-    description:
-      'Release notes, quickstarts, and finish states feel more cohesive when the docs celebrate successful outcomes the same way the tool does.',
-    image: '/img/robot/robot-success.svg',
-    link: '/blog/v1-31-0-nano-local-inference',
-    cta: 'Read the latest release',
-    label: 'success',
-  },
+const heroStats = [
+  {value: '33', label: 'CLI commands'},
+  {value: '22', label: 'MCP tools'},
+  {value: '30', label: 'Educational topics'},
 ] as const;
 
 function HeroSection() {
@@ -43,21 +19,20 @@ function HeroSection() {
         <div className={styles.heroContent}>
           <div className={styles.heroEyebrow}>
             <img src="/img/V.png" alt="" className={styles.heroMark} />
-            Pixel brand continuity across app, CLI, and docs
+            Voyage AI embeddings + MongoDB Atlas Vector Search
           </div>
           <h1 className={styles.heroTitle}>
-            The same robot that guides <code>vai</code> now carries the docs.
+            Build production RAG pipelines from the command line.
           </h1>
           <p className={styles.heroSubtitle}>
-            {siteConfig.tagline}. The pixel robot already gives the CLI a
-            memorable set of moments for greeting, thinking, searching, and
-            success. Bringing those same poses into the docs makes the whole
-            brand feel like one product family instead of separate surfaces.
+            {siteConfig.tagline}. <code>vai</code> chunks, embeds, stores, retrieves,
+            and reranks your documents in one CLI or MCP server, backed by
+            Voyage AI embeddings and MongoDB Atlas Vector Search.
           </p>
           <div className={styles.heroTags}>
-            <span>Onboarding</span>
-            <span>Guides</span>
-            <span>Release notes</span>
+            <span>CLI</span>
+            <span>MCP Server</span>
+            <span>Agentic Workflows</span>
           </div>
           <div className={styles.installCommand}>
             <code>npm install -g voyageai-cli</code>
@@ -81,26 +56,38 @@ function HeroSection() {
           </div>
         </div>
         <div className={styles.heroVisual}>
-          <div className={styles.robotPanel}>
-            <div className={styles.robotPanelTop}>
+          <div className={styles.heroPanel}>
+            <div className={styles.heroPanelTop}>
               <span />
               <span />
               <span />
-              <div className={styles.robotPanelLabel}>robot/wave</div>
+              <div className={styles.heroPanelLabel}>vai pipeline</div>
             </div>
-            <img
-              src="/img/robot/robot-wave.svg"
-              alt="vai pixel robot waving"
-              className={styles.heroRobot}
-            />
-            <p className={styles.robotPanelText}>
-              A shared visual language for hello, in-progress work, and shipped
-              results.
-            </p>
-            <div className={styles.robotPanelLegend}>
-              <span>wave</span>
-              <span>thinking</span>
-              <span>success</span>
+            <div className={styles.heroPanelSteps}>
+              <div className={styles.heroPanelStep}>
+                <span className={styles.heroPanelStepIndex}>1</span>
+                <span>Chunk &amp; embed documents with Voyage AI</span>
+              </div>
+              <div className={styles.heroPanelStep}>
+                <span className={styles.heroPanelStepIndex}>2</span>
+                <span>Store vectors in MongoDB Atlas</span>
+              </div>
+              <div className={styles.heroPanelStep}>
+                <span className={styles.heroPanelStepIndex}>3</span>
+                <span>Retrieve with vector search + reranking</span>
+              </div>
+              <div className={styles.heroPanelStep}>
+                <span className={styles.heroPanelStepIndex}>4</span>
+                <span>Chat, evaluate, or automate with agents</span>
+              </div>
+            </div>
+            <div className={styles.heroPanelStats}>
+              {heroStats.map((stat) => (
+                <div key={stat.label} className={styles.heroPanelStat}>
+                  <span className={styles.heroPanelStatValue}>{stat.value}</span>
+                  <span className={styles.heroPanelStatLabel}>{stat.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -117,9 +104,9 @@ const features = [
     link: '/docs/commands/overview',
   },
   {
-    title: 'MCP Server: 11 Tools',
+    title: 'MCP Server: 22 Tools',
     description:
-      'Drop vai into Claude Desktop, Cursor, or any MCP-compatible editor. Your AI assistant gets semantic search, embeddings, reranking, and cost estimation.',
+      'Drop vai into Claude Desktop, Cursor, or any MCP-compatible editor: retrieval, multimodal embeddings, workspace + code-index search, ingest, cost estimates, and workflow authoring.',
     link: '/docs/guides/mcp-server/overview',
   },
   {
@@ -141,42 +128,6 @@ function FeaturesSection() {
                 <h3 className={styles.featureTitle}>{feature.title}</h3>
                 <p className={styles.featureDescription}>{feature.description}</p>
               </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function RobotMomentsSection() {
-  return (
-    <section className={styles.robotMomentsSection}>
-      <div className="container">
-        <div className={styles.robotMomentsIntro}>
-          <p className={styles.sectionEyebrow}>Brand imagery</p>
-          <h2 className={styles.robotMomentsTitle}>
-            Carry the same moments from the terminal into the docs
-          </h2>
-          <p className={styles.robotMomentsDescription}>
-            The CLI already gives the robot a job: greet people, show work in
-            flight, and celebrate clean finishes. The docs can reuse those same
-            visual cues in the places users learn, search, and ship.
-          </p>
-        </div>
-        <div className={styles.robotMomentGrid}>
-          {robotMoments.map((moment) => (
-            <Link
-              key={moment.title}
-              to={moment.link}
-              className={styles.robotMomentCard}>
-              <div className={styles.robotMomentArt}>
-                <img src={moment.image} alt="" />
-              </div>
-              <p className={styles.robotMomentLabel}>{moment.label}</p>
-              <h3>{moment.title}</h3>
-              <p>{moment.description}</p>
-              <span className={styles.robotMomentCta}>{moment.cta}</span>
             </Link>
           ))}
         </div>
@@ -272,7 +223,6 @@ export default function Home(): React.JSX.Element {
       description={siteConfig.tagline}>
       <HeroSection />
       <main>
-        <RobotMomentsSection />
         <FeaturesSection />
         <TerminalSection />
         <CapabilitiesSection />
